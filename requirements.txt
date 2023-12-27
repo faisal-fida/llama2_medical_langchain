@@ -6,3 +6,6 @@ flask
 pypdf
 PyMuPDF
 python-dotenv
+
+
+-e .
