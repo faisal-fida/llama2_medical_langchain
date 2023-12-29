@@ -21,7 +21,7 @@ To install and run this project, you need to have Python 3.9 or higher and pip i
 
 Follow these steps to install and run this project:
 
-1. Clone this repository to your local machine using:
+### 1. Clone this repository to your local machine using:
 ```bash
 git clone https://github.com/Prashantkhobragade/Sanjivani-Medical_Chat_Bot.git
 ```
