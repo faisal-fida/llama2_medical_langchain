@@ -13,3 +13,15 @@ Sanjivani-Medical_Chat_Bot is a medical chatbot that can answer questions from a
 - Semantic indexing: It creates an index of the embeddings using Pinecone, a vector database that supports fast and scalable similarity search.
 - Ranking: It ranks the text chunks based on their similarity to the query embedding and returns the most relevant ones as the ranked result.
 - Answer generation: It uses Llama2 again to generate a natural language answer from the ranked result, using the query as the context.
+
+
+## Installation 💻
+
+To install and run this project, you need to have Python 3.8 or higher and pip installed on your system. You also need to have an API key for Pinecone and a PDF file (medical book) as the data source.
+
+Follow these steps to install and run this project:
+
+- Clone this repository to your local machine using:
+```bash
+git clone https://github.com/Prashantkhobragade/Sanjivani-Medical_Chat_Bot.git
+```
