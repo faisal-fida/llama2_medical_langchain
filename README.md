@@ -14,7 +14,7 @@ This project is built using the following technologies:
 - **LLM Model**: Meta Llama2.
 - **Quantized Model**: llama-2-7b-chat.ggmlv3.q4_0.bin
 - **Vector DataBase**: Pinecone
-- **PDF File**: The gale encyclopedia of medicine second edition vol 1
+- **PDF File**: The Gale Encyclopedia of Medicine Second Edition vol 1
 
 
 ## Features 🚀
@@ -22,7 +22,7 @@ This project is built using the following technologies:
 - **Data integration:** It integrates data from multiple PDF files to create a unified knowledge base.
 - **Data extraction:** It extracts text from PDF files using OCR (optical character recognition) and NLP (natural language processing) techniques.
 - **Text chunking:** It splits the text into smaller chunks based on sentences, paragraphs, or sections, to reduce the computational complexity and improve the accuracy of the embeddings.
-- **Embedding:** It converts the text chunks and the query into numerical vectors using Llama2, a large language model that can encode semantic and syntactic information.
+- **Embedding:** It converts the text chunks and the query into numerical vectors using HuggingFaceEmbeddings.
 - **Semantic indexing:** It creates an index of the embeddings using Pinecone, a vector database that supports fast and scalable similarity search.
 - **Ranking:** It ranks the text chunks based on their similarity to the query embedding and returns the most relevant ones as the ranked result.
 - **Answer generation:** It uses Llama2 again to generate a natural language answer from the ranked result, using the query as the context.
