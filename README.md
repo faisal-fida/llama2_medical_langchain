@@ -17,11 +17,11 @@ Sanjivani-Medical_Chat_Bot is a medical chatbot that can answer questions from a
 
 ## Installation 💻
 
-To install and run this project, you need to have Python 3.8 or higher and pip installed on your system. You also need to have an API key for Pinecone and a PDF file (medical book) as the data source.
+To install and run this project, you need to have Python 3.9 or higher and pip installed on your system. You also need to have an API key for Pinecone and a PDF file (medical book) as the data source.
 
 Follow these steps to install and run this project:
 
-- Clone this repository to your local machine using:
+1. Clone this repository to your local machine using:
 ```bash
 git clone https://github.com/Prashantkhobragade/Sanjivani-Medical_Chat_Bot.git
 ```
