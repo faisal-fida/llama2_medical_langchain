@@ -25,3 +25,21 @@ Follow these steps to install and run this project:
 ```bash
 git clone https://github.com/Prashantkhobragade/Sanjivani-Medical_Chat_Bot.git
 ```
+
+### 2. Create a conda environment after opening the repository:
+```bash
+conda create -n mchat python=3.9 -y
+```
+```bash
+conda activate mchat/
+```
+### 3. Install the requirements:
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Create a .env file in the root directory and add your Pinecone credentials as follows:
+```ini
+PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+PINECONE_API_ENV = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
