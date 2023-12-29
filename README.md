@@ -14,6 +14,7 @@ This project is built using the following technologies:
 - **LLM Model**: Meta Llama2.
 - **Quantized Model**: llama-2-7b-chat.ggmlv3.q4_0.bin
 - **Vector DataBase**: Pinecone
+- **PDF File**: The gale encyclopedia of medicine second edition vol 1
 
 
 ## Features 🚀
@@ -92,6 +93,5 @@ This project is open for contributions from anyone interested in medical chatbot
 
 This project is based on the following papers and resources:
 
-- [Llama2: A Large Language Model for Answering Questions]
-- [Pinecone: A Vector Database for Machine Learning]
-- [Data Extraction and Question Answering from PDF Files]
+- [Llama2: A Large Language Model for Answering Questions](https://ai.meta.com/llama/)
+- [Pinecone: A Vector Database for Machine Learning](https://www.pinecone.io/learn/vector-database/)
