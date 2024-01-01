@@ -12,45 +12,70 @@ import os
 
 app = Flask(__name__)
 
-
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_API_ENV = os.getenv("PINECONE_API_ENV")
 
-embeddings = download_hugging_face_embeddings()
-
-
-#initializing the Pinecone
-pinecone.init(api_key=PINECONE_API_KEY,
-              environment=PINECONE_API_ENV)
-
+pinecone.init(api_key=PINECONE_API_KEY,environment=PINECONE_API_ENV)
 index_name = "med-chatbot"
 
-#Loading the exsisting index from PINECONE
-docsearch = Pinecone.from_existing_index(index_name, embeddings)
 
-
-PROMPT = PromptTemplate(template=prompt_template,
+def set_custom_prompt():    
+    """
+    Prompt template for QA retrieval for each vectorstore
+    """
+    prompt = PromptTemplate(template=prompt_template,
                         input_variables=["context","question"])
-chain_type_kwargs = {"prompt": PROMPT}
+    return prompt
 
 
-llm = CTransformers(
-        model = "TheBloke/Mixtral-8x7B-v0.1-GGUF",
+def retrieval_qa_chain(llm, prompt, db):
+    """
+    Retrieval QA Chain
+    """
+    qa_chain = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type='stuff',
+        retriever=db.as_retriever(search_kwargs={'k': 2}),
+        return_source_documents=True,
+        chain_type_kwargs={'prompt': prompt},
+        )
+    return qa_chain
+
+
+def load_llm():
+    """
+    Load the locally downloaded model here
+    """
+    llm = CTransformers(
+        model = "TheBloke/Llama-2-7B-Chat-GGML",
         model_type="llama",
         max_new_tokens = 512,
         temperature = 0.5
     )
+    return llm
 
 
-qa = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff",
-    retriever = docsearch.as_retriever(search_kwargs={'k': 2}),
-    return_source_documents = True,
-    chain_type_kwargs=chain_type_kwargs
-)
+def qa_bot():
+    """
+    QA Model Function
+    """
+    embeddings = download_hugging_face_embeddings()
+    db = Pinecone.from_existing_index(index_name, embeddings)
+    llm = load_llm()
+    qa_prompt = set_custom_prompt()
+    qa = retrieval_qa_chain(llm, qa_prompt, db)
+    return qa
+
+
+def final_result(query):
+    """
+    Output function
+    """
+    qa_result = qa_bot()
+    response = qa_result({'query': query})
+    return response
 
 
 @app.route("/")
@@ -60,12 +85,11 @@ def index():
 
 @app.route("/get", methods=["GET", "POST"])
 def chat():
-    msg = request.form["msg"]
-    input = msg
+    query = request.form["msg"]
+    response = final_result(query)
     print(input)
-    result=qa({"query": input})
-    print("Response : ", result["result"])
-    return str(result["result"])
+    print("Response : ", response["result"])
+    return str(response["result"])
 
 
 if __name__ == "__main__":
