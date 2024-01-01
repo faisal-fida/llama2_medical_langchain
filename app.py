@@ -25,7 +25,7 @@ embeddings = download_hugging_face_embeddings()
 pinecone.init(api_key=PINECONE_API_KEY,
               environment=PINECONE_API_ENV)
 
-index_name = "sanjivani-med-chatbot"
+index_name = "med-chatbot"
 
 #Loading the exsisting index from PINECONE
 docsearch = Pinecone.from_existing_index(index_name, embeddings)
@@ -36,10 +36,12 @@ PROMPT = PromptTemplate(template=prompt_template,
 chain_type_kwargs = {"prompt": PROMPT}
 
 
-llm = CTransformers(model = "model/llama-2-7b-chat.ggmlv3.q4_0.bin",
-                    model_type="llama",
-                    config = {"max_new_tokens": 512,
-                              "temperature":0.8})
+llm = CTransformers(
+        model = "TheBloke/Mixtral-8x7B-v0.1-GGUF",
+        model_type="llama",
+        max_new_tokens = 512,
+        temperature = 0.5
+    )
 
 
 qa = RetrievalQA.from_chain_type(
