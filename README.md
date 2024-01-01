@@ -1,8 +1,8 @@
-# Sanjivani-Medical_Chat_Bot 🩺
+# Llama-Medical_Chat_Bot 🩺
+
 ## A medical chatbot that can answer questions from a PDF file using Llama2
 
-Sanjivani-Medical_Chat_Bot is a medical chatbot that can answer questions from a PDF file using Llama2, a large language model. It uses data integration, data extraction, text chunking, embedding, semantic indexing, and ranking to process the PDF file and generate answers.
-
+Llama-Medical_Chat_Bot is a medical chatbot that can answer questions from a PDF file using Llama2, a large language model. It uses data integration, data extraction, text chunking, embedding, semantic indexing, and ranking to process the PDF file and generate answers.
 
 ## ⚙️ Tech Stack
 
@@ -16,7 +16,6 @@ This project is built using the following technologies:
 - **Vector DataBase**: Pinecone
 - **PDF File**: The Gale Encyclopedia of Medicine Second Edition vol 1
 
-
 ## Features 🚀
 
 - **Data integration:** It integrates data from multiple PDF files to create a unified knowledge base.
@@ -27,7 +26,6 @@ This project is built using the following technologies:
 - **Ranking:** It ranks the text chunks based on their similarity to the query embedding and returns the most relevant ones as the ranked result.
 - **Answer generation:** It uses Llama2 again to generate a natural language answer from the ranked result, using the query as the context.
 
-
 ## Installation 💻
 
 To install and run this project, you need to have Python 3.9 or higher and pip installed on your system. You also need to have an API key for Pinecone and a PDF file (medical book) as the data source.
@@ -35,28 +33,36 @@ To install and run this project, you need to have Python 3.9 or higher and pip i
 Follow these steps to install and run this project:
 
 ### 1. Clone this repository to your local machine using:
+
 ```bash
-git clone https://github.com/Prashantkhobragade/Sanjivani-Medical_Chat_Bot.git
+git clone https://github.com/Prashantkhobragade/Llama-Medical_Chat_Bot.git
 ```
 
 ### 2. Create a conda environment after opening the repository:
+
 ```bash
 conda create -n mchat python=3.9 -y
 ```
+
 ```bash
 conda activate mchat/
 ```
+
 ### 3. Install the requirements:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Create a .env file in the root directory and add your Pinecone credentials as follows:
+
 ```ini
 PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 PINECONE_API_ENV = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
+
 ### 5. Download the quantized model from the link and keep the model in the model directory:
+
 ```ini
 ## Download the Llama 2 Model:
 
@@ -66,11 +72,15 @@ llama-2-7b-chat.ggmlv3.q4_0.bin
 ## From the following link:
 https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/tree/main
 ```
+
 ### 6. Uncomment the #initializing the Pinecone block code and run the following command:
+
 ```ini
 python store_index.py
 ```
+
 ### 7. finally
+
 ```ini
 python app.py
 ```
@@ -87,7 +97,6 @@ This project is open for contributions from anyone interested in medical chatbot
 
 - Report bugs, suggest features, or ask questions by opening an issue.
 - Fork the repository, make changes, and submit a pull request.
-
 
 ## References 📚
 
